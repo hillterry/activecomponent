@@ -18,6 +18,7 @@ module.exports = {
             },
         ]
     },
+    devtool: 'source-map',
     babel: {
         presets: ['es2015'],
         plugins: ['transform-runtime']

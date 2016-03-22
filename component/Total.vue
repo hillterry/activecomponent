@@ -29,13 +29,13 @@
         events:{
             'updateitems': function (value){
                 let itemqty = 0 ,
-                    totalprice = 0;
+                    totalprice = 0
                 for(let i=0; i<value.length ; i++){
-                    itemqty += parseInt(value[i]['qty']);
+                    itemqty += parseInt(value[i]['qty'])
                     totalprice += value[i]['qty'] * value[i]['price']
                 }
-                this.qty = itemqty;
-                this.totalprice = totalprice;
+                this.qty = itemqty
+                this.totalprice = totalprice
             },
         }
     }

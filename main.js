@@ -12,7 +12,7 @@ new Vue({
   },
   events:{
       'select-product':function (value) {
-        this.$broadcast('updateitems' , value);
+        this.$broadcast('updateitems' , value)
       }
   }
 })

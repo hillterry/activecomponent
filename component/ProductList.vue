@@ -51,7 +51,7 @@ a{
         <div class="item-form">
             <div class="cell p-checkbox">
                 <div class="cart-checkbox">
-                    <input type="checkbox" id="product{{$index}}" v-bind:value="$index" v-model="checkedItems" v-on:change="itemSelected($index)">
+                    <input type="checkbox" id="product{{$index}}" v-bind:value="$index" v-model="checkedItems" v-on:change="itemSelected($index , $event)">
                     <span class="line-circle"></span>
                 </div>
             </div>
@@ -89,6 +89,7 @@ a{
             </div>
         </div>
     </div>
+    
 </div>
 
 </template>
@@ -98,7 +99,7 @@ import {data} from '../data/cartinfo'
 
 //每次涉及到金额运算的时候都把数据派发给父组件，让父组件来广播给其他组件
 function dispatch(){
-    let updateItems = [];
+    let updateItems = []
     for(let i=0 ; i < this.checkedItems.length ; i++){
         updateItems.push(data.data[this.checkedItems[i]])
     }
@@ -117,23 +118,24 @@ export default {
             if(data.data[index]['qty'] <= 1){
                 return
             }
-            data.data[index]['qty']--;
+            data.data[index]['qty']--
             dispatch.bind(this)()
         },
         increment: function (index, event) {
-            data.data[index]['qty']++;
+            data.data[index]['qty']++
             dispatch.bind(this)()
         },
         changeQty: function (index, event) {
             if(event.target.value.toString() === '0'){
-                event.target.value = 1;
-                data.data[index]['qty'] = 1;
+                event.target.value = 1
+                data.data[index]['qty'] = 1
             }else{
-                data.data[index]['qty'] = event.target.value;
+                data.data[index]['qty'] = event.target.value
             }
             dispatch.bind(this)()
         },
-        itemSelected: function (){
+        itemSelected: function (index, event){
+            console.log(event)
             dispatch.bind(this)()
         }
     }
